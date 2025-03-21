@@ -29,3 +29,23 @@ body {
     gap: 20px; /* Khoảng cách giữa ảnh và chữ */
 }
 
+ #music-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        background-color: #ff9800;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s, background-color 0.3s;
+    }
+#music-btn:hover {
+        background-color: #e68900;
+        transform: scale(1.1);
+    }
+

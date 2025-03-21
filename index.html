@@ -18,8 +18,23 @@
             <h1 class="title">Dennis Trần</h1>
         </div>
 
-        <audio autoplay loop src="Sounds/BackgroundMusic.mp3"> 
-        </audio>
+        <button id="music-btn" onclick="toggleMusic()">🎵</button>
+
+        <script>
+            function toggleMusic() {
+                var music = document.getElementById("bg-music");
+                if (music.paused) {
+                    let sound = document.getElementById("mouseClick");
+                    sound.currentTime = 0;
+                    sound.play();
+                    music.play();
+                } else {
+                    music.pause();
+                }
+            }
+        </script>
+
+
 
         <iframe width="560" height="315" 
  src="https://www.youtube.com/embed/LZWczrIc2IA" frameborder="0" allowfullscreen></iframe>
