@@ -1,0 +1,31 @@
+body {
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+.title{
+	font-size: 72px;
+    font-family: 'Lobster', cursive;
+    color: #8B0000; /* Màu đỏ đậm */
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Bóng đổ lớn hơn */
+    text-align: left;
+}
+
+.avatar{
+	width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white; /* Viền trắng để nổi bật */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Khoảng cách giữa ảnh và chữ */
+}
+
