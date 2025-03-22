@@ -1,17 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body {
-            background-color: antiquewhite;
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
+    background: linear-gradient(to right, #7A6F60, #E3C6A6);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
 
 .title{
-	font-size: 72px;
-    font-family: 'Lobster', cursive;
-    color: #8B0000; /* Màu đỏ đậm */
+	font-size: 90px;
+    font-family: 'Anton';
+    color: white;
     text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Bóng đổ lớn hơn */
     text-align: left;
+    -webkit-text-stroke: 0.5px black;
 }
 
 .avatar{
@@ -45,7 +49,62 @@ body {
         transition: transform 0.2s, background-color 0.3s;
     }
 #music-btn:hover {
-        background-color: #e68900;
-        transform: scale(1.1);
-    }
+    background-color: #e68900;
+    transform: scale(1.1);
+}
+.icon {
+    font-size: 32px;
+    position: relative;
+    z-index: 1;
+}
 
+.slash {
+    position: absolute;
+    font-size: 60px;
+    color: black;
+    font-weight: bold;
+    display: block;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa icon và chữ */
+    padding: 12px 24px;
+    background: white; /* Màu đỏ của YouTube */
+    color: black;
+    font-size: 48px;
+    font-family: 'Anton', sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px; /* Bo góc mềm mại hơn */
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 500px;  /* Độ rộng cố định */
+    height: 110px;  /* Độ cao cố định, hơi hẹp */
+    margin-bottom: 30px;
+    box-shadow: 13px 13px 1px black; /* Đổ bóng xuống phải */
+}
+
+.social-btn:hover {
+    box-shadow: 8px 8px 1px black;
+    transform: translate(4px, 4px); /* Dịch button xuống */
+}
+
+
+.social-icon {
+    width: 100px;
+    height: auto;
+}
+
+.social-btn img {
+    width: 80px;  
+    height: 70px;  
+    object-fit: cover;  
+    border-radius: 30%; /* Làm ảnh bo tròn */
+}

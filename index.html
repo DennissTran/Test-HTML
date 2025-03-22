@@ -9,51 +9,73 @@
 </head>
 <body>
     <header>
+       
+        
         <audio id="bg-music" loop preload="auto">
             <source src="Sounds/BackgroundMusic.mp3">
         </audio>
 
+        <!-- Heading /!-->
         <div class="heading">
             <img class="avatar" src="Images/myAvatar.png">
-            <h1 class="title">Dennis Trần</h1>
+            <h1 class="title">Dennis Tran</h1>
         </div>
 
-        <button id="music-btn" onclick="toggleMusic()">🎵</button>
+
+        <!-- Background Music /!-->
+        <button id="music-btn" onclick="toggleMusic()">
+            <span class="icon">🎵</span>
+            <span class="slash" id="slash">\</span>
+        </button>
 
         <script>
             function toggleMusic() {
                 var music = document.getElementById("bg-music");
+                var btn = document.getElementById("music-btn");
                 if (music.paused) {
                     let sound = document.getElementById("mouseClick");
                     sound.currentTime = 0;
                     sound.play();
                     music.play();
+                    slash.style.display = "none";
                 } else {
                     music.pause();
+                    slash.style.display = "block";
                 }
             }
         </script>
 
 
 
-        <iframe width="560" height="315" 
- src="https://www.youtube.com/embed/LZWczrIc2IA" frameborder="0" allowfullscreen></iframe>
-        <br>
-
+        <!-- Social Media /!-->
         <audio id = "mouseClick" src="Sounds/mouseClick.mp3"></audio>
-        <button onclick = "changeText()" style="border-radius:10px; background-color: aqua; font-size: 24px; font-family: 'Poppins';">
-            Kênh Youtube của mình
-        </button>
+        <div>
+            <button class="social-btn" onclick = "openURL('https://www.youtube.com/@DennisTran14')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_4N37TIgWC_QLpspNwGddZH8DhzljeYMFnA&s" class="social-icon">
+                Youtube Channel
+            </button>
 
+            <button class="social-btn" onclick = "openURL('https://www.facebook.com/DennisTran1402/')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/512px-2021_Facebook_icon.svg.png" class="social-icon">
+                Facebook
+            </button>
+
+            <button class="social-btn" onclick = "openURL('https://wescan.vn/DennisTran')">
+                <img src="https://play-lh.googleusercontent.com/unTxZad3Ba-O5dlOa6yewbfM7rICQY8QzEije-jEj_R9J6uYZmdo5FKlzma2uOZqmvQ=w240-h480-rw" class="social-icon">
+                Wescan
+            </button>
+        </div>
         
         <script>
-            changeText  = () => {
+            openURL = (url) => {
                 let sound = document.getElementById("mouseClick");
                 sound.currentTime = 0;
                 sound.play();
-                window.open("https://www.youtube.com/@DennisTran14");
+                window.open(url);
             }
         </script>
+
+        -Các khóa học
     </header>
 </body>
 </html>
