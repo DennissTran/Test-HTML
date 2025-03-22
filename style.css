@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
 
 body {
@@ -79,14 +80,14 @@ body {
     background: white; /* Màu đỏ của YouTube */
     color: black;
     font-size: 48px;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     border: none;
     border-radius: 25px; /* Bo góc mềm mại hơn */
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 500px;  /* Độ rộng cố định */
+    width: 550px;  /* Độ rộng cố định */
     height: 110px;  /* Độ cao cố định, hơi hẹp */
     margin-bottom: 30px;
     box-shadow: 13px 13px 1px black; /* Đổ bóng xuống phải */
@@ -153,4 +154,13 @@ body {
         right: 2px !important;
         margin: 0;
     }
+}
+
+.button-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 90px;
+    font-size: clamp(1px, 50vw, 50px);
 }

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styleSpotify.css">
+</head>
+<body>
+    <!-- Title !-->
+    <div class="Heading">
+        <img class="heading-icon" src="https://www.scdn.co/i/_global/twitter_card-default.jpg">
+
+        <h1 class="heading-title">
+           Các bài hát đã lưu
+        </h1>
+    </div>
+
+    <!-- List songs !-->
+    <div class="playlist">
+        <div class="playlist-header">
+            <p># Tiêu đề</p>
+            <p>Thời gian</p>
+        </div>
+
+        <button class="shuffle-btn" onclick="shuffleSongs() + playAudio('')">
+            <p> Shuffle </p>
+        </button>
+
+        <div id = "song-list">
+            <div class="song" onclick="playAudio('Spotify/Thằng Điên.mp3', 'Thằng Điên')">
+                <p class="song-id">1</p>
+                <img class="song-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1b7XF-Is7LOnmzqvH5J4ZKt6GtesHoQAjRQ&s" alt="Album Art">
+                <div class="song-info">
+                    <p class="song-title">Thằng Điên</p>
+                    <p class="artist">JustaTee, Phương Ly</p>
+                </div>
+                <p class="song-duration">3:54</p>
+            </div>
+
+            <div class="song" onclick="playAudio('Spotify/vaicaunoicokhiennguoithaydoi.mp3', 'Vaicaunoicokhiennguoithaydoi')">
+                <p class="song-id">2</p>
+                <img class="song-image" src="https://pbs.twimg.com/media/FVYMsiiVsAMxMEc?format=jpg&name=large" alt="Album Art">
+                <div class="song-info">
+                    <p class="song-title">Vaicaunoicokhiennguoithaydoi</p>
+                    <p class="artist">Grey D, Tlinh</p>
+                </div>
+                <p class="song-duration">2:54</p>
+            </div>
+
+            <div class="song" onclick="playAudio('Spotify/Everytime.mp3', 'Every Time')">
+                <p class="song-id">3</p>
+                <img class="song-image" src="https://i.scdn.co/image/ab67616d0000b27352b4a39a68f595936012712e" alt="Album Art">
+                <div class="song-info">
+                    <p class="song-title">Every Time</p>
+                    <p class="artist">CHEN, Punch</p>
+                </div>
+                <p class="song-duration">3:09</p>
+            </div>
+        </div>
+        <!-- Taskbar !-->
+
+        <div id="taskbar">
+            <img id="taskbar-img" src="" alt="Album Art">
+            <div class="taskbar-info">
+                <p id="taskbar-title"></p>
+                <p id="taskbar-artist"></p>
+            </div>
+            
+            <div id="custom-player">
+                <div class="taskbar-button">
+                    <button id="prev-btn">⏮</button>
+                    <button id="play-btn">⏸</button>
+                    <button id="next-btn">⏭</button>
+                </div>
+                
+                <input type="range" id="seek-bar" value="0">
+                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+            </div>
+            <audio id="audio-player"></audio>
+        </div>
+
+        <!-- Click song!-->
+        <audio id = "mouseClick" src="Sounds/mouseClick.mp3"></audio>
+
+        <script class="click-song">
+            let currentAudio = null;
+
+            const audio = document.getElementById("audio-player");
+            const playBtn = document.getElementById("play-btn");
+            const seekBar = document.getElementById("seek-bar");
+            const currentTime = document.getElementById("current-time");
+            const totalTime = document.getElementById("total-time");
+            const songs = document.querySelectorAll(".song");
+
+            playBtn.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.textContent = "⏸";
+                } else {
+                    audio.pause();
+                    playBtn.textContent = "▶";
+                }
+            });
+
+            audio.addEventListener("timeupdate", () => {
+                seekBar.value = (audio.currentTime / audio.duration) * 100;
+                currentTime.textContent = formatTime(audio.currentTime);
+                totalTime.textContent = formatTime(audio.duration);
+            });
+
+            seekBar.addEventListener("input", () => {
+                audio.currentTime = (seekBar.value / 100) * audio.duration;
+            });
+
+            function formatTime(seconds) {
+                let min = Math.floor(seconds / 60);
+                let sec = Math.floor(seconds % 60);
+                return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+            }
+
+            function showTaskbar(file, title) {
+                // Tìm tất cả các thẻ .song
+                console.log(title);
+                // Duyệt qua danh sách bài hát
+                songs.forEach(song => {
+                    let idElement = song.querySelector(".song-title"); 
+                    if (idElement && idElement.innerHTML.trim() === title) {
+
+                        let artist = song.querySelector(".artist").innerText;
+                        let duration = song.querySelector(".song-duration")?.innerText;
+                        let image = song.querySelector(".song-image").src;
+
+                        document.getElementById("taskbar-title").innerText = title;
+                        document.getElementById("taskbar-artist").innerText = artist;
+                        document.getElementById("taskbar-img").src = image;
+                        currentAudio = document.getElementById("audio-player");
+                        currentAudio.src = file;
+                        currentAudio.currentTime = 0;
+                        currentAudio.play();
+                        document.getElementById("taskbar").style.bottom = "3vw";
+                    }
+                });
+
+            }
+
+            function playAudio(file, title) {
+                let clickSound = document.getElementById("mouseClick");
+                clickSound.currentTime = 0;
+                clickSound.play();
+                showTaskbar(file, title);
+            }
+
+            function shuffleSongs() {
+                let list = document.getElementById("song-list");
+                let songs = Array.from(list.children);
+
+                // Fisher-Yates Shuffle Algorithm
+                for (let i = songs.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    [songs[i], songs[j]] = [songs[j], songs[i]];
+                }
+
+                // Keep the previous id
+                for (let i = 0; i < songs.length; i++) {
+                    songs[i].querySelector(".song-id").innerHTML = i + 1;
+                }
+
+                // Xóa danh sách cũ và thêm danh sách mới
+                list.innerHTML = "";
+                songs.forEach(song => list.append(song));
+            }
+        </script>
+    </div>
+    
+</body>
+</html>

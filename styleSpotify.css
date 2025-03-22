@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
+body{
+    background: linear-gradient(to bottom, lightslategrey, black) !important;
+    color: white;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+.Heading{
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 0.1vw; /* Khoảng cách giữa icon và tiêu đề */
+    justify-content: center;
+}
+
+.heading-title{
+    font-size: 4.5vw;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;    
+    padding: 20px;
+    -webkit-text-stroke: 0.15vw white; /* Viền đen giúp chữ dày hơn */
+}
+
+.heading-icon {
+    width: 10vw;  /* Điều chỉnh kích thước ảnh */
+    mix-blend-mode: screen;
+}
+body {
+    background: #121212; /* Màu nền Spotify */
+    color: white;
+    font-family: 'Manrope', sans-serif;
+}
+
+.playlist {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.song {
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.song img {
+    width: 6vw;
+    height: 6vw;
+    border-radius: 10px;
+    margin: 0 15px;
+}
+
+.song-info {
+    flex-grow: 1;
+}
+
+.song-title {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.artist {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.song-duration {
+    text-align: right;
+}
+
+.song:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.shuffle-btn{
+    position : fixed;
+    bottom: 5vw;      
+    left: 5vw;
+    background: #1db954;
+    color: black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 1.5vw;
+    font-weight: bold;
+    padding: 1vw 1vw;
+}
+
+#taskbar {
+    position: fixed;
+    width: 100%;
+    bottom: -100vw;
+    left: 15vw;
+    background: black;
+    color: white;
+    display: flex;
+    padding: 2vw;
+    gap: 2vw;
+}
+
+#taskbar-img{
+    width: 7vw;
+    height: 7vw;
+    margin-right: 10px;
+    align-self: center;
+}
+
+#taskbar-title {
+    font-weight: bold;
+}
+
+#taskbar-artist {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#custom-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: black;
+    padding: 10px;
+    border-radius: 10px;
+    width: 7vw;
+}
+
+#seek-bar {
+    flex: 1;
+    appearance: none;
+    background: white;
+    height: 3px;
+    cursor: pointer;
+}
+
+.taskbar-button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    gap: 2vw; /* Khoảng cách giữa các nút */
+    margin-left: 2vw; 
+}
+
+.taskbar-button button {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    color: #000;
+    font-size: 3.3vw;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.taskbar-button button:hover {
+    background: #1DB954; /* Màu xanh Spotify */
+    color: white;
+    transform: scale(1.1);
+}
