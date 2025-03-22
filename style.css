@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
+
 body {
     background: linear-gradient(to right, #7A6F60, #E3C6A6);
     display: flex;
@@ -107,4 +108,39 @@ body {
     height: 70px;  
     object-fit: cover;  
     border-radius: 30%; /* Làm ảnh bo tròn */
+}
+
+
+/* Khi màn hình nhỏ hơn 768px (điện thoại) */
+@media (max-width: 768px) {
+    body {
+        transform: scale(0.7); /* Thu nhỏ toàn bộ */
+        transform-origin: top;
+        font-size: 16px;
+    }
+
+    .container {
+        width: 95%; /* Giảm chiều rộng */
+        margin: auto;
+    }
+
+    h1, h2, h3 {
+        font-size: smaller; /* Chữ tiêu đề nhỏ lại */
+    }
+
+    p {
+        font-size: 14px; /* Văn bản nhỏ hơn */
+    }
+
+    img {
+        max-width: 90%; /* Ảnh không vượt quá màn hình */
+        height: auto; /* Giữ tỷ lệ */
+        border-radius: 10px; /* Bo tròn nhẹ */
+    }
+
+    .button {
+        width: 90%;
+        font-size: 14px;
+        padding: 10px;
+    }
 }
