@@ -148,17 +148,16 @@ body{
 }
 
 .taskbar-button button {
+    align-items: center;
+    justify-content: center;
     width: 5vw;
     height: 5vw;
     border-radius: 50%;
-    border: none;
     background: #fff;
     color: #000;
     font-size: 3.3vw;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .taskbar-button button:hover {

@@ -59,8 +59,9 @@
                 <p class="song-duration">3:09</p>
             </div>
         </div>
-        <!-- Taskbar !-->
 
+
+        <!-- Taskbar !-->
         <div id="taskbar">
             <img id="taskbar-img" src="" alt="Album Art">
             <div class="taskbar-info">
@@ -85,14 +86,14 @@
         <audio id = "mouseClick" src="Sounds/mouseClick.mp3"></audio>
 
         <script class="click-song">
-            let currentAudio = null;
-
-            const audio = document.getElementById("audio-player");
+            let audio = document.getElementById("audio-player");
             const playBtn = document.getElementById("play-btn");
             const seekBar = document.getElementById("seek-bar");
             const currentTime = document.getElementById("current-time");
             const totalTime = document.getElementById("total-time");
             const songs = document.querySelectorAll(".song");
+            let currentIndexSong = -1;
+
 
             playBtn.addEventListener("click", () => {
                 if (audio.paused) {
@@ -101,6 +102,20 @@
                 } else {
                     audio.pause();
                     playBtn.textContent = "▶";
+                }
+            });
+
+            document.getElementById("prev-btn").addEventListener("click", () => {
+                if (currentIndexSong > 0) {
+                    playSong(songs[currentIndexSong - 1]);
+                }
+            });
+
+            document.getElementById("next-btn").addEventListener("click", () => {
+                if (currentIndexSong + 1 < songs.length) {
+                    playSong(songs[currentIndexSong + 1]);
+                } else {
+                    playSong(songs[0]);
                 }
             });
 
@@ -120,36 +135,38 @@
                 return `${min}:${sec < 10 ? "0" : ""}${sec}`;
             }
 
-            function showTaskbar(file, title) {
-                // Tìm tất cả các thẻ .song
-                console.log(title);
-                // Duyệt qua danh sách bài hát
-                songs.forEach(song => {
-                    let idElement = song.querySelector(".song-title"); 
-                    if (idElement && idElement.innerHTML.trim() === title) {
+            function playSong(song) {
+                let artist = song.querySelector(".artist").innerText;
+                let duration = song.querySelector(".song-duration")?.innerText;
+                let image = song.querySelector(".song-image").src;
+                let title = song.querySelector(".song-title").innerText;
 
-                        let artist = song.querySelector(".artist").innerText;
-                        let duration = song.querySelector(".song-duration")?.innerText;
-                        let image = song.querySelector(".song-image").src;
+                document.getElementById("taskbar-title").innerText = title;
+                document.getElementById("taskbar-artist").innerText = artist;
+                document.getElementById("taskbar-img").src = image;
 
-                        document.getElementById("taskbar-title").innerText = title;
-                        document.getElementById("taskbar-artist").innerText = artist;
-                        document.getElementById("taskbar-img").src = image;
-                        currentAudio = document.getElementById("audio-player");
-                        currentAudio.src = file;
-                        currentAudio.currentTime = 0;
-                        currentAudio.play();
-                        document.getElementById("taskbar").style.bottom = "3vw";
-                    }
-                });
+                document.getElementById("taskbar").style.bottom = "3vw";
+                document.getElementById("audio-player").src = song.getAttribute("onclick").match(/'([^']+)'/)[1];
 
+                audio = document.getElementById("audio-player");
+                audio.currentTime = 0;
+                audio.play();
+
+                currentIndexSong = song.querySelector(".song-id").innerText - 1;
+                console.log(currentIndexSong);
             }
 
             function playAudio(file, title) {
                 let clickSound = document.getElementById("mouseClick");
                 clickSound.currentTime = 0;
                 clickSound.play();
-                showTaskbar(file, title);
+                
+                songs.forEach(song => {
+                    let idElement = song.querySelector(".song-title"); 
+                    if (idElement && idElement.innerHTML.trim() === title) {
+                        playSong(song);         
+                    }
+                });
             }
 
             function shuffleSongs() {
