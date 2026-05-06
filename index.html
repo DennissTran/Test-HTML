@@ -1,84 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dennis Tran</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-       
-        
-        <audio id="bg-music" loop preload="auto">
-            <source src="Sounds/BackgroundMusic.mp3">
-        </audio>
-
-        <!-- Heading /!-->
+        <!-- Heading -->
         <div class="heading">
-            <img class="avatar" src="Images/myAvatar.png">
+            <img class="avatar" src="Images/myAvatar.png" alt="Avatar của Dennis Tran">
             <h1 class="title">Dennis Tran</h1>
         </div>
 
+        <!-- Background Music -->
+        <audio id="bg-music" loop preload="auto">
+            <source src="Sounds/BackgroundMusic.mp3" type="audio/mpeg">
+        </audio>
 
-        <!-- Background Music /!-->
-        <button id="music-btn" onclick="toggleMusic()">
+        <button id="music-btn" onclick="toggleMusic()" aria-label="Bật/tắt nhạc nền">
             <span class="icon">🎵</span>
             <span class="slash" id="slash">\</span>
         </button>
 
-        <script>
-            function toggleMusic() {
-                var music = document.getElementById("bg-music");
-                var btn = document.getElementById("music-btn");
-                if (music.paused) {
-                    let sound = document.getElementById("mouseClick");
-                    sound.currentTime = 0;
-                    sound.play();
-                    music.play();
-                    slash.style.display = "none";
-                } else {
-                    music.pause();
-                    slash.style.display = "block";
-                }
-            }
-        </script>
+        <!-- Main Content Container -->
+        <div class="main-content">
+            <!-- Left Column: Khóa học -->
+            <div class="column left-column">
+                <h2 class="section-title">🏆 </> Khóa học</h2>
+                <button class="social-btn" onclick="openURL(CONFIG.hsgTinCourse)">
+                    <img src="" id="hsg-img" class="social-icon" alt="HSG Tin">
+                    <p class="button-text">Khóa học HSG Tin</p>
+                </button>
 
+                <button class="social-btn" onclick="openURL(CONFIG.applyBigTechCourse)">
+                    <img src="" id="bigtech-img" class="social-icon" alt="BigTech">
+                    <p class="button-text">Khóa học Apply BigTech</p>
+                </button>
+            </div>
 
+            <!-- Divider -->
+            <div class="divider"></div>
 
-        <!-- Social Media /!-->
-        <audio id = "mouseClick" src="Sounds/mouseClick.mp3"></audio>
-        <div>
-            <button class="social-btn" onclick = "openURL('https://www.youtube.com/@DennisTran14')">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_4N37TIgWC_QLpspNwGddZH8DhzljeYMFnA&s" class="social-icon">
-                <p class="button-text"> Youtube </p>
-            </button>
+            <!-- Right Column: Social Media -->
+            <div class="column right-column">
+                <h2 class="section-title">🌐 Kết nối với tôi</h2>
+                
+                <button class="social-btn" onclick="openURL(CONFIG.youtube)">
+                    <img src="" id="youtube-img" class="social-icon" alt="YouTube">
+                    <p class="button-text">Youtube</p>
+                </button>
 
-            <button class="social-btn" onclick = "openURL('https://www.facebook.com/DennisTran1402/')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/512px-2021_Facebook_icon.svg.png" class="social-icon">
-                <p class="button-text"> Facebook </p>
-            </button>
+                <button class="social-btn" onclick="openURL(CONFIG.facebook)">
+                    <img src="" id="facebook-img" class="social-icon" alt="Facebook">
+                    <p class="button-text">Facebook</p>
+                </button>
 
-            <button class="social-btn" onclick = "openURL('https://wescan.vn/DennisTran')">
-                <img src="https://play-lh.googleusercontent.com/unTxZad3Ba-O5dlOa6yewbfM7rICQY8QzEije-jEj_R9J6uYZmdo5FKlzma2uOZqmvQ=w240-h480-rw" class="social-icon">
-                <p class="button-text"> Wescan </p>
-            </button>
+                <button class="social-btn" onclick="openURL(CONFIG.tiktok)">
+                    <img src="" id="tiktok-img" class="social-icon" alt="TikTok">
+                    <p class="button-text">TikTok</p>
+                </button>
+
+                <button class="social-btn" onclick="openURL(CONFIG.linkedin)">
+                    <img src="" id="linkedin-img" class="social-icon" alt="LinkedIn">
+                    <p class="button-text">LinkedIn</p>
+                </button>
+
+                <button class="social-btn" onclick="openURL(CONFIG.wescan)">
+                    <img src="" id="wescan-img" class="social-icon" alt="Wescan">
+                    <p class="button-text">Wescan</p>
+                </button>
+            </div>
         </div>
-        
-        <script>
-            openURL = (url) => {
-                let sound = document.getElementById("mouseClick");
-                sound.currentTime = 0;
-                sound.play();
-                window.open(url);
-            }
-        </script>
 
-        <!-- My play list !-->
-        <a href="Spotify.html">
-            🎵
-        </a>
+        <!-- Audio cho click effect -->
+        <audio id="mouseClick" src="Sounds/mouseClick.mp3"></audio>
     </header>
+
+    <script src="config.js"></script>
+    <script>
+        // Set images from CONFIG
+        document.getElementById('youtube-img').src = CONFIG.images.youtube;
+        document.getElementById('facebook-img').src = CONFIG.images.facebook;
+        document.getElementById('tiktok-img').src = CONFIG.images.tiktok;
+        document.getElementById('linkedin-img').src = CONFIG.images.linkedin;
+        document.getElementById('wescan-img').src = CONFIG.images.wescan;
+        document.getElementById('hsg-img').src = CONFIG.images.hsgTin;
+        document.getElementById('bigtech-img').src = CONFIG.images.bigTech;
+    </script>
 </body>
 </html>
